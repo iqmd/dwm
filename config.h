@@ -2,7 +2,7 @@
 #include<X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -20,16 +20,16 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4","5","6" };
+static const char *tags[] = { "1", "2", "3", "4","5","6","7" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance    title       tags mask         isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,                1,           -1 },
+	{ "firefox",  NULL,       "Firefox Preferences",        1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
@@ -64,7 +64,8 @@ static const char *brightupcmd[] = {"brightnessctl", "set", "5%+",NULL};
 static const char *brightdwcmd[] = {"brightnessctl", "set", "5%-",NULL};
 static const char *upvol[] = { "/usr/bin/amixer", "set", "Master", "5%+", NULL };
 static const char *downvol[] = { "/usr/bin/amixer", "set", "Master", "5%-", NULL };
-static const char *mutevol[] = { "/usr/bin/amixerl", "set", "Master", "toggle", NULL };
+static const char *mutevol[] = { "/usr/bin/amixer", "set", "Master", "toggle", NULL };
+static const char *firefoxcmd[] = { "firefox", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,8 +108,9 @@ static const Key keys[] = {
 	{ 0,				XF86XK_MonBrightnessDown,	spawn, 		{.v = brightdwcmd}	},
 	//Key Bindings for Audio Control
 	{ 0,                            XF86XK_AudioLowerVolume, 	spawn, 		{.v = downvol } 	},
-	{ 0,                            XF86XK_AudioMute, 		spawn, 		{.v = mutevol } 	},
+	{ 0,                            XF86XK_AudioMute, 		    spawn, 		{.v = mutevol } 	},
 	{ 0,                            XF86XK_AudioRaiseVolume, 	spawn, 		{.v = upvol   } 	},
+  { MODKEY|ShiftMask,             XK_f,                     spawn,    {.v = firefoxcmd } },
 	
 };
 
