@@ -11,9 +11,11 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack Nerd Font Mono:pixelsize=20:antialias=true:autohint=true", 
-                                        "Font Awesome 6 Brands:size=25",
-                                        "JoyPixels:pixelsize=18:antialias=true:autohint=true"};
+static const char *fonts[] = {"DejaVu Sans Mono:pixelsize=20:antialias=true:autohint:true",
+                              "Font Awesome 6 Brands:pixelsize=20:antialias=true:autohint:true",
+                              "JoyPixels:pixelsize=20:antialias=true:autohint=true"};  
+//static const char *fonts[]          = { "Hack Nerd Font Mono:pixelsize=20:antialias=true:autohint=true"}; 
+                                        //"JoyPixels:pixelsize=80:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -69,9 +71,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *brightupcmd[] = {"brightnessctl", "set", "5%+",NULL};
 static const char *brightdwcmd[] = {"brightnessctl", "set", "5%-",NULL};
-static const char *upvol[] = { "/usr/bin/amixer", "set", "Master", "5%+", NULL };
-static const char *downvol[] = { "/usr/bin/amixer", "set", "Master", "5%-", NULL };
-static const char *mutevol[] = { "/usr/bin/amixer", "set", "Master", "toggle", NULL };
+static const char *upvol[] = { "/usr/bin/pamixer", "--allow-boost", "-i", "10", NULL };
+static const char *downvol[] = { "/usr/bin/pamixer", "--allow-boost", "-d", "10", NULL };
+static const char *mutevol[] = { "/usr/bin/pamixer", "-t", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 
 static const Key keys[] = {
