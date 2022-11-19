@@ -71,8 +71,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *brightupcmd[] = {"brightnessctl", "set", "5%+",NULL};
 static const char *brightdwcmd[] = {"brightnessctl", "set", "5%-",NULL};
-static const char *upvol[] = { "/usr/bin/pamixer", "--allow-boost", "-i", "10", NULL };
-static const char *downvol[] = { "/usr/bin/pamixer", "--allow-boost", "-d", "10", NULL };
+static const char *upvol[] = { "/usr/bin/pamixer", "--allow-boost", "-i", "5", NULL };
+static const char *downvol[] = { "/usr/bin/pamixer", "--allow-boost", "-d", "5", NULL };
 static const char *mutevol[] = { "/usr/bin/pamixer", "-t", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 
