@@ -15,8 +15,8 @@ static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[] = {"DejaVu Sans Mono:pixelsize=20:antialias=true:autohint:true",
                               "Font Awesome 6 Brands:pixelsize=20:antialias=true:autohint:true",
                               "JoyPixels:pixelsize=20:antialias=true:autohint=true"};  
-//static const char *fonts[]          = { "Hack Nerd Font Mono:pixelsize=20:antialias=true:autohint=true"}; 
-                                        //"JoyPixels:pixelsize=80:antialias=true:autohint=true"};
+
+
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -70,12 +70,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *brightupcmd[] = {"brightnessctl", "set", "5%+",NULL};
-static const char *brightdwcmd[] = {"brightnessctl", "set", "5%-",NULL};
-static const char *upvol[] = { "/usr/bin/pamixer", "--allow-boost", "-i", "10", NULL };
-static const char *downvol[] = { "/usr/bin/pamixer", "--allow-boost", "-d", "10", NULL };
-static const char *mutevol[] = { "/usr/bin/pamixer", "-t", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -112,18 +106,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_c,      quit,           {0} },
-	//My key bindings
-	//Key binding for Brightness Control
-	{ 0,				XF86XK_MonBrightnessUp,		spawn, 		{.v = brightupcmd}	},
-	{ 0,				XF86XK_MonBrightnessDown,	spawn, 		{.v = brightdwcmd}	},
-	//Key Bindings for Audio Control
-	{ 0,                            XF86XK_AudioLowerVolume, 	spawn, 		{.v = downvol } 	},
-	{ 0,                            XF86XK_AudioMute, 		    spawn, 		{.v = mutevol } 	},
-	{ 0,                            XF86XK_AudioRaiseVolume, 	spawn, 		{.v = upvol   } 	},
-  { MODKEY|ShiftMask,             XK_f,                     spawn,    {.v = firefoxcmd } },
 	
 };
 

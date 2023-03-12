@@ -1,0 +1,32 @@
+diff a/dwm.c b/dwm.c	(rejected hunks)
+@@ -207,6 +207,7 @@ static void setup(void);
+ static void showhide(Client *c);
+ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
++static void swapfocus();
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
+ static void tile(Monitor *);
+@@ -236,6 +237,7 @@ static int xerrorstart(Display *dpy, XEr
+ static void zoom(const Arg *arg);
+ 
+ /* variables */
++static Client *prevclient = NULL;
+ static const char broken[] = "broken";
+ static char stext[256];
+ static int screen;
+@@ -2109,12 +2123,13 @@ void
+ zoom(const Arg *arg)
+ {
+ 	Client *c = selmon->sel;
++	prevclient = nexttiled(selmon->clients);
+ 
+ 	if (!selmon->lt[selmon->sellt]->arrange
+ 	|| (selmon->sel && selmon->sel->isfloating))
+ 		return;
+ 	if (c == nexttiled(selmon->clients))
+-		if (!c || !(c = nexttiled(c->next)))
++		if (!c || !(c = prevclient = nexttiled(c->next)))
+ 			return;
+ 	pop(c);
+ }
